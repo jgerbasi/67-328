@@ -9,8 +9,8 @@ var express = require('express'),
 var app = express();
 
 app.configure(function(){
-  //app.set('views', __dirname + '/views');	// Set the directory for views
-  //app.set('view engine', 'ejs');	// Set the view engine to EJS
+  app.set('views', __dirname + '/views');	// Set the directory for views
+  app.set('view engine', 'ejs');	// Set the view engine to EJS
   app.use(express.favicon());	// Return a favicon if requested
   app.use(express.logger('tiny'));	// Log requests to the console.log
   app.use(express.bodyParser());	// Parse the request body into req.body object
@@ -32,7 +32,7 @@ app.get('/garages', garage.list)
 app.get('/cars', car.list);
 
 //specific object paths  (you can rename them to whatever you want)
-app.get('/garage/:garage_id', garage.get_garage)
+app.get('/garage/:garage_id', garage.get_garage);
 app.get('/car/:car_id', car.get_car);
 //app.get('/garage/:garage_id/car/:car_id', garage.get_car) //don't know if we need this
 
