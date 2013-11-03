@@ -8,7 +8,7 @@
 
 exports.list = function(req, res){
   // This placeholder directly responds, and does not use the view engine
-  res.render('cars', { carList: "The list of cars would be here? "});
+  res.send('This response is in car.js');
 };
 
 exports.get_car = function(req, res){

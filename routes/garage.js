@@ -13,7 +13,7 @@ exports.doPost = function(req, res){
 };
 
 exports.list = function(req, res){
-	res.render('garages', {garageList: "This list of garages should go here"});
+	res.send('This response is in garage.js');
 }
 
 exports.get_garage = function(req, res){

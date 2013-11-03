@@ -1,23 +1,27 @@
+
 $(function() {
-	$("#f1").submit(doPost);
-	$("#f2").submit(doPut);
+	$("#newGarage").submit(newGarage);
+	$("#newCar").submit(newCar);
+	listGarages();
+	listCars();
 	} );
 
 /* 
  * This is the basic form for an Ajax POST
  */
  
-function doPost() {
-	$.ajax({
-			url: "request",
-			type: "post",
-			data: {
-				testString: $("#ts1").val()
-			},
-			success: function(data) {
-				$('#div1').html(data);
-			}
-	});
+function newGarage() {
+	// $.ajax({
+	// 		url: "request",
+	// 		type: "post",
+	// 		data: {
+	// 			testString: $("#ts1").val()
+	// 		},
+	// 		success: function(data) {
+	// 			$('#div1').html(data);
+	// 		}
+	// });
+	alert("modify me in javascripts/forms.js");
 	return false;	
 }
 
@@ -28,21 +32,42 @@ function doPost() {
  * form of defining success separately.
  */
 
-function doPut() {
-	var aj = $.ajax({
-			url: "request",
-			type: "put",
-			data: {
-				testString: $("#ts2").val()
-			},
-	});
+function newCar() {
+	// var aj = $.ajax({
+	// 		url: "request",
+	// 		type: "put",
+	// 		data: {
+	// 			testString: $("#ts2").val()
+	// 		},
+	// });
 
-	aj.done(function(data) {
-				$('#div2').html(data);
-			});
-			
+	// aj.done(function(data) {
+	// 			$('#div2').html(data);
+	// 		});
+	alert("modify me in javascripts/forms.js");
 	return false;	
 }
 
+// function to list all of the garages
+function listGarages(){
+	var aj = $.ajax({
+		url: "cars",
+		type: "get"
+	});
+	aj.done(function(data) {
+		$("#garageList").html(data);
+	});
+}
 
-	
+// function to list all of the cars
+function listCars(){
+	var aj = $.ajax({
+		url: "garages",
+		type: "get"
+	});
+	aj.done(function(data) {
+		$("#carList").html(data);
+	});
+}
+
+
