@@ -11,17 +11,16 @@ $(function() {
  */
  
 function newGarage() {
-	// $.ajax({
-	// 		url: "request",
-	// 		type: "post",
-	// 		data: {
-	// 			testString: $("#ts1").val()
-	// 		},
-	// 		success: function(data) {
-	// 			$('#div1').html(data);
-	// 		}
-	// });
-	alert("modify me in javascripts/forms.js");
+	$.ajax({
+			url: "garage",
+			type: "put",
+			data: {
+				name: $("#newGarage input").val()
+			},
+			success: function(data) {
+				$('#newGarageResponse').html(data);
+			}
+	});
 	return false;	
 }
 
@@ -33,18 +32,19 @@ function newGarage() {
  */
 
 function newCar() {
-	// var aj = $.ajax({
-	// 		url: "request",
-	// 		type: "put",
-	// 		data: {
-	// 			testString: $("#ts2").val()
-	// 		},
-	// });
+	var aj = $.ajax({
+			url: "car",
+			type: "put",
+			data: {
+				make: $("#make").val(),
+				model: $("#model").val(),
+				garage: $("#garage").val()
+			}
+	});
 
-	// aj.done(function(data) {
-	// 			$('#div2').html(data);
-	// 		});
-	alert("modify me in javascripts/forms.js");
+	aj.done(function(data) {
+				$('#newCarResponse').html(data);
+	});
 	return false;	
 }
 

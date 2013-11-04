@@ -38,7 +38,7 @@ app.get('/car/:car_id', car.get_car);
 
 //create
 app.put('/garage', garage.put);
-app.put('/car', update.put);
+app.put('/car', car.put);
 
 //update
 app.post('/garage/:garage_id', garage.post); //not positive if these are the correct format
