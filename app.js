@@ -9,8 +9,6 @@ var express = require('express'),
 var app = express();
 
 app.configure(function(){
-  //app.set('views', __dirname + '/views');	// Set the directory for views
-  //app.set('view engine', 'ejs');	// Set the view engine to EJS
   app.use(express.favicon());	// Return a favicon if requested
   app.use(express.logger('tiny'));	// Log requests to the console.log
   app.use(express.bodyParser());	// Parse the request body into req.body object
@@ -19,34 +17,38 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));	// Process static files
 });
 
-
-
-
-//all the second arguments are calls to functions in the routes folder that handle request/response
-
-//home page path
+// home page path
 app.get('/', routes.pathless);
 
-//full list paths(optional)
+// ============= Car Paths =============
+
+// Read
+app.get('/garages/:garage_id/cars', car.list);
+app.get('/garages/:garage_id/cars/:car_id', car.get);
+
+// Create
+app.put('/garages/:garage_id/cars', car.put);
+
+// Update
+app.post('/garages/:garage_id/cars/:car_id', car.post);
+
+// Destroy
+app.delete('/garages/:garage_id/cars/:car_id', update.del);
+
+// ============= Garage Paths =============
+
+// Read
 app.get('/garages', garage.list)
-app.get('/cars', car.list);
+app.get('/garages/:garage_id', garage.get)
 
-//specific object paths  (you can rename them to whatever you want)
-app.get('/garage/:garage_id', garage.get_garage)
-app.get('/car/:car_id', car.get_car);
-//app.get('/garage/:garage_id/car/:car_id', garage.get_car) //don't know if we need this
+// Create
+app.put('/garages', garage.put);
 
-//create
-app.put('/garage', garage.put);
-app.put('/car', update.put);
+// Update
+app.post('/garages/:garage_id', garage.post);
 
-//update
-app.post('/garage/:garage_id', garage.post); //not positive if these are the correct format
-app.post('/car/:car_id', update.post);
-
-//delete
-app.delete('/garage/:garage_id', garage.delete); 
-app.delete('/car/:car_id', update.delete);
+// Destroy
+app.delete('/garages/:garage_id', garage.del); 
 
 
 app.listen(44444);

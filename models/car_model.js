@@ -1,5 +1,3 @@
-
-
 function Car(brand, color) {
 	this.brand = brand;
 	this.color = color;

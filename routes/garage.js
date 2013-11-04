@@ -1,13 +1,21 @@
-/*
- * Formerly was routes/updates
- */
+var garage_class = require("../models/garage_model.js");
 
-  //var car_class = require("../models/car_model.js");
-
-exports.doPut = function(req, res){
-  res.render('verbs', { verb: 'PUT', message: req.body.testString});
+exports.list = function(req, res) {
+  res.send(garage_class.list);
 };
 
-exports.doPost = function(req, res){
-  res.render('verbs', { verb: 'POST', message: req.body.testString});
+exports.get = function(req, res) {
+  res.send(garage_class.get(req.query.garage_id));
+};
+
+exports.put = function(req, res) {
+  res.send(garage_class.put(req.body.garage_name, req.body.garage_location));
+};
+
+exports.post = function(req, res) {
+  res.send(garage_class.post(req.body.garage_id, req.body.gargae_name, req.body.garage_location));
+};
+
+exports.del = function(req, res) {
+  res.send(garage_class.del(req.body.garage_id));
 };
