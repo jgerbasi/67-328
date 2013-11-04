@@ -51,7 +51,8 @@ function newCar() {
 	aj.done(function(data) {
 				$('#newCarResponse').html(data);
 				$("#make").val("");
-				$("#model").val();
+				$("#model").val("");
+				$("#garage").val("");
 	});
 	return false;	
 }
