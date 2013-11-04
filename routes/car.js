@@ -8,8 +8,16 @@ exports.get = function(req, res) {
   res.send(car_class.get(req.query.garage_id, req.query.car_id));
 };
 
+exports.all = function(req, res) {
+	//go through cars data structure to list all cars
+	res.send("The whole list of cars will be here if we decide. Find in routes/car.js");
+}
+
 exports.put = function(req, res) {
-  res.send(car_class.put(req.body.garage_id, req.body.make, req.body.model));
+	// create new car
+	var car = new car_class(req.body.make, req.body.model, req.body.garage_id);
+	// add to data structure? 
+  res.send("created new car of type " + car.make + " " + car.model + " for garage " + car.garage_id);
 };
 
 exports.post = function(req, res) {

@@ -1,7 +1,8 @@
-function Car(brand, color) {
-	this.brand = brand;
-	this.color = color;
+function Car(make, model, gid) {
+	this.make = make;
+	this.model = model;
 	//generate id?
+	this.garage_id = gid;
 }
 
 

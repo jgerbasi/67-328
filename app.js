@@ -25,6 +25,7 @@ app.get('/', routes.pathless);
 // ============= Car Paths =============
 
 // Read
+app.get('/cars', car.all);
 app.get('/garages/:garage_id/cars', car.list);
 app.get('/garages/:garage_id/cars/:car_id', car.get);
 

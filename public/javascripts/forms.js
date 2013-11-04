@@ -12,13 +12,17 @@ $(function() {
  
 function newGarage() {
 	$.ajax({
-			url: "garage",
+			url: "garages",
 			type: "put",
 			data: {
-				name: $("#newGarage input").val()
+				garage_name: $("#name").val(),
+				garage_location: $("#location").val()
 			},
 			success: function(data) {
 				$('#newGarageResponse').html(data);
+				// after the garage is created, clear the text boxes
+				$("#name").val("");
+				$("#location").val("");
 			}
 	});
 	return false;	
@@ -32,18 +36,22 @@ function newGarage() {
  */
 
 function newCar() {
+	var garageID = $("#garage").val();
+	var URLString = "garages/" + garageID + "/cars";
 	var aj = $.ajax({
-			url: "car",
+			url: URLString,
 			type: "put",
 			data: {
 				make: $("#make").val(),
 				model: $("#model").val(),
-				garage: $("#garage").val()
+				garage_id: garageID
 			}
 	});
 
 	aj.done(function(data) {
 				$('#newCarResponse').html(data);
+				$("#make").val("");
+				$("#model").val();
 	});
 	return false;	
 }
@@ -51,7 +59,7 @@ function newCar() {
 // function to list all of the garages
 function listGarages(){
 	var aj = $.ajax({
-		url: "cars",
+		url: "garages",
 		type: "get"
 	});
 	aj.done(function(data) {
@@ -62,7 +70,7 @@ function listGarages(){
 // function to list all of the cars
 function listCars(){
 	var aj = $.ajax({
-		url: "garages",
+		url: "cars",
 		type: "get"
 	});
 	aj.done(function(data) {
