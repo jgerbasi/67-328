@@ -1,11 +1,11 @@
 var car_class = require("../models/car_model.js");
 
 exports.list = function(req, res) {
-  res.send(car_class.list);
+  res.send(car_class.list());
 };
 
 exports.get = function(req, res) {
-  res.send(car_class.get(req.query.garage_id, req.query.car_id));
+  res.send(car_class.get(req.query.car_id));
 };
 
 exports.all = function(req, res) {
@@ -15,15 +15,15 @@ exports.all = function(req, res) {
 
 exports.put = function(req, res) {
 	// create new car
-	var car = new car_class(req.body.make, req.body.model, req.body.garage_id);
+	var car = new car_class(req.body.make, req.body.model);
 	// add to data structure? 
   res.send("created new car of type " + car.make + " " + car.model + " for garage " + car.garage_id);
 };
 
 exports.post = function(req, res) {
-  res.send(car_class.post(req.body.garage_id, req.body.car_id, req.body.make, req.body.model));
+  res.send(car_class.post(req.body.car_id, req.body.make, req.body.model));
 };
 
 exports.del = function(req, res) {
-  res.send(car_class.del(req.body.garage_id, req.body.car_id));
+  res.send(car_class.del(req.body.car_id));
 };

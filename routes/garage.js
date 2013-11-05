@@ -1,12 +1,7 @@
 var garage_class = require("../models/garage_model.js");
 
 exports.list = function(req, res) {
-	/*
-	 * Loop through to get all garages in data structure?
-	 * there was a garage_class.list call here but I removed it to make the
-	 * idea of listing garages present on the home page
-	 */
-  res.send("This list of all garages would be here. Find in routes/garage.js");
+  res.send(garage_class.list());
 };
 
 exports.get = function(req, res) {
@@ -21,7 +16,7 @@ exports.put = function(req, res) {
 };
 
 exports.post = function(req, res) {
-  res.send(garage_class.post(req.body.garage_id, req.body.gargae_name, req.body.garage_location));
+  res.send(garage_class.post(req.body.garage_id, req.body.garage_name, req.body.garage_location));
 };
 
 exports.del = function(req, res) {
