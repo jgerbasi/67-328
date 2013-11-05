@@ -3,7 +3,7 @@ var gdb = []
 function Garage(name, location) {
 	this.name = name;
 	this.location = location;
-  gdb.append(this);
+  gdb.push(this);
 }
 
 Garage.list = function() {
