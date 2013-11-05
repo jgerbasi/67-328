@@ -5,7 +5,8 @@ exports.list = function(req, res) {
 };
 
 exports.get = function(req, res) {
-  res.send(garage_class.get(req.query.garage_id));
+	//console.log(req.params);
+  res.send(garage_class.get(req.params.garage_id));
 };
 
 exports.put = function(req, res) {

@@ -5,7 +5,7 @@ exports.list = function(req, res) {
 };
 
 exports.get = function(req, res) {
-  res.send(car_class.get(req.query.car_id));
+  res.send(car_class.get(req.params.car_id));
 };
 
 exports.all = function(req, res) {

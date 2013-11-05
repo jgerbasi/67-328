@@ -25,7 +25,8 @@ app.get('/', routes.pathless);
 // ============= Car Paths =============
 
 // Read
-app.get('/cars', car.all);
+app.get('/cars', car.list);
+app.get('/cars/:car_id', car.get)
 app.get('/garages/:garage_id/cars', car.list);
 app.get('/garages/:garage_id/cars/:car_id', car.get);
 
@@ -41,8 +42,8 @@ app.delete('/garages/:garage_id/cars/:car_id', update.del);
 // ============= Garage Paths =============
 
 // Read
-app.get('/garages', garage.list)
-app.get('/garages/:garage_id', garage.get)
+app.get('/garages', garage.list);
+app.get('/garages/:garage_id', garage.get);
 
 // Create
 app.put('/garages', garage.put);
