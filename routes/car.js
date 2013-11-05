@@ -10,14 +10,14 @@ exports.get = function(req, res) {
 
 exports.all = function(req, res) {
 	//go through cars data structure to list all cars
-	res.send("The whole list of cars will be here if we decide. Find in routes/car.js");
+	res.send(car_class.list());
 }
 
 exports.put = function(req, res) {
 	// create new car
 	var car = new car_class(req.body.make, req.body.model);
 	// add to data structure? 
-  res.send("created new car of type " + car.make + " " + car.model + " for garage " + car.garage_id);
+  res.send("created new car of type " + car.make + " " + car.model);
 };
 
 exports.post = function(req, res) {

@@ -3,7 +3,7 @@ var db = [];
 function Car(make, model) {
 	this.make = make;
 	this.model = model;
-  db.append(this);
+  db.push(this);
 }
 
 
